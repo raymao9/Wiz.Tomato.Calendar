@@ -147,7 +147,7 @@ export default class App extends React.Component {
         allDay = !( start.hasTime() && end.hasTime() );
         // 新建日程
         const newEvent = await new CalendarEvent({
-            title: title || '无标题', 
+            title: title || '未命名',
             backgroundColor: backgroundColor || '#32CD32',
             start, end, allDay, rptRule
         }).init();
@@ -193,7 +193,7 @@ export default class App extends React.Component {
     }
 
     async handleEventDeleteData(event) {
-        if ( WizConfirm("确定要删除该日程？", '番茄助理') ) {
+        if ( WizConfirm("您確定要刪除該行程嗎？", '番茄助理') ) {
             // 删除日程
             let newEvent = await new CalendarEvent(event).init();
             await newEvent.deleteEventData(false);
@@ -202,7 +202,7 @@ export default class App extends React.Component {
     }
 
     async handleEventDeleteDoc(event) {
-        if ( WizConfirm("确定要删除该日程源文档？\n「确定」将会导致相关笔记被删除！", '番茄助理') ) {
+        if ( WizConfirm("您確定要刪除該行程對應的筆記嗎？", '番茄助理') ) {
             let newEvent = await new CalendarEvent(event).init();
             await newEvent.deleteEventData(true);
         }
